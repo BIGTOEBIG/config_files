@@ -38,22 +38,21 @@ set guifont=Cascadia_Code:h10:cANSI
 
 set nu
 set hls
-set is
 " colorscheme slate
 " colorscheme koehler 
 " colorscheme peachpuff
 set cursorline " hightlight current line
-set cursorcolumn " hightlight current column
+" set cursorcolumn " hightlight current column
 set ruler 
 
-nmap <silent> ,m :noh<CR>
+nmap <silent> ,m :set nohls<CR>
+" or : nmap <silent> ,m :noh<CR>
 nmap <silent> ,n :set hls<CR>
 nmap <silent> ,c :%s///gc<CR>
 nmap ,l nzz
 nmap ,; Nzz
-nmap ,s *vey/<C-R>0<CR>:vimgrep /<C-R>0/  %<CR>:copen<CR>
-nmap ,a /<C-R>0<CR>:vimgrep /<C-R>0/  %<CR>:copen<CR>
-nmap ,a /<C-R>0<CR>:vimgrep /<C-R>0/  %<CR>:copen<CR>
+map ,s *vey/<C-R>0<CR>:vimgrep /<C-R>0/  %<CR>:copen<CR><C-W>W
+map ,a /<C-R>0<CR>:vimgrep /<C-R>0/  %<CR>:copen<CR><C-W>W
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,ucs-2,latin1
 set ttyfast "Improves smoothness of redrawing
 
@@ -67,3 +66,5 @@ set statusline+=\ [%{getcwd()}] " current dir
 set statusline+=\ [%{&encoding}] " encoding
 set statusline+=%=%-14.(%l/%L,%c%V%)\ %p%% " Right aligned file nav info
 
+set foldmethod=indent
+set nofoldenable
