@@ -32,3 +32,5 @@ function func() {
     echo Show the last exec return '$?': $?
 }
 export ip_vps='204.13.155.160'
+source /usr/share/git/git-prompt.sh
+export PS1='[\u\h \t \w $(__git_ps1 " (%s)") ]\$\n>> '
