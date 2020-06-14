@@ -31,9 +31,9 @@ color_map() {
 function add_path() {
     local add_path="$1"
     if [[ "$PATH" =~ "$add_path" ]] ; then
-        export PATH="$add_path:$PATH"
-    else
         echo $add_path is included in \$PATH already !
+    else
+        PATH="$add_path:$PATH"
     fi 
 }
 
