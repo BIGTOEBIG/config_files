@@ -33,7 +33,11 @@ function add_path() {
     if [[ "$PATH" =~ "$add_path" ]] ; then
         echo $add_path is included in \$PATH already !
     else
-        PATH="$add_path:$PATH"
+        if [ "$2" == "-a" ]; then
+            PATH="$PATH:$add_path"
+        else
+            PATH="$add_path:$PATH"
+        fi
     fi 
 }
 
