@@ -1,6 +1,6 @@
 " ===== following setting is for Vundle ==========
 set nocompatible  " not need to be compatible with vi
-if ! has('win32') || has('win64')
+if  has('gui_win32') || has('gui_win64')
     " ====== gui font setting =================
     " set guifontset guifont=Courier\ New\ 10
     " set guifont=Courier_New:h12:cANSI
@@ -16,6 +16,12 @@ if ! has('win32') || has('win64')
     " colorscheme koehler 
     " colorscheme peachpuff
     colorscheme blue
+    set mouse=a
+
+else
+    " ====== colorscheme setting ==============
+    colorscheme blue
+    set mouse=
 
     " ====== plugin setting ===================
     filetype off
@@ -31,9 +37,6 @@ if ! has('win32') || has('win64')
     filetype plugin indent on
     " filetype plugin on
     "
-else
-    " ====== colorscheme setting ==============
-    colorscheme blue
 endif
 " ================================================
 " Put the rest of your vimrcs here
@@ -57,7 +60,6 @@ set nu
 set hls
 set incsearch
 
-set mouse=
 " set cursorline " hightlight current line
 " set cursorcolumn " hightlight current column
 
