@@ -1,39 +1,45 @@
 " ===== following setting is for Vundle ==========
 set nocompatible  " not need to be compatible with vi
-if  has('gui_win32') || has('gui_win64')
+if  has('gui') 
     " ====== gui font setting =================
-    " set guifontset guifont=Courier\ New\ 10
-    " set guifont=Courier_New:h12:cANSI
-    " set guifont=Cascadia_Code:h10:cANSI
-    set guifont=Source_Code_Pro:h10:cANSI
+    if  has('gui_win32') || has("gui_win64")
+        " set guifontset guifont=Courier\ New\ 10
+        " set guifont=Courier_New:h12:cANSI
+        " set guifont=Cascadia_Code:h10:cANSI
+        set guifont=Source_Code_Pro:h10:cANSI
+    else
+        set guifont=source\ code\ pro\ 11
+    endif
 
     " ====== menu language setting ============
     set langmenu=en   "set menu's language of gvim. no spaces beside '='
+    set guioptions+=d
+    set guioptions+=P
     " language en_US.utf8   "set menu's language of gvim. no spaces beside '='
-
     " ====== gui colorscheme setting ==========
     " colorscheme slate
     " colorscheme koehler 
     " colorscheme peachpuff
     colorscheme blue
     set mouse=a
+    
 
 else
     " ====== colorscheme setting ==============
-    colorscheme blue
-    set mouse=
+    " colorscheme blue
+    " set mouse=
 
     " ====== plugin setting ===================
-    filetype off
-    set rtp+=/c/Users/lxq/.vim/bundle/Vundle.vim
-    "set rtp+=C:\Users\lxq\.vim\bundle\Vundle.vim
-    call vundle#begin()
-    " call vundle#begin('~/.vim/plugins') " alternatively using this call to specify your plugins dir 
-    Plugin 'VundleVim/Vundle.vim'
-    " ---- put your plugins here -----
-    Plugin 'vimwiki'
-    " --------------------------------
-    call vundle#end()
+    " filetype off
+    " set rtp+=/c/Users/lxq/.vim/bundle/Vundle.vim
+    " "set rtp+=C:\Users\lxq\.vim\bundle\Vundle.vim
+    " call vundle#begin()
+    " " call vundle#begin('~/.vim/plugins') " alternatively using this call to specify your plugins dir 
+    " Plugin 'VundleVim/Vundle.vim'
+    " " ---- put your plugins here -----
+    " Plugin 'vimwiki'
+    " " --------------------------------
+    " call vundle#end()
     filetype plugin indent on
     " filetype plugin on
     "
