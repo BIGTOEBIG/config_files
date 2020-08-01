@@ -57,9 +57,10 @@ set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,ucs-2,latin1
 set tabstop=4
 set shiftwidth=4
 set expandtab
-" cindent, indentexpr
+" set autoindent
 set smartindent
-set autoindent
+" cindent
+" indentexpr
 
 " ======  common setting ====================
 set nu
