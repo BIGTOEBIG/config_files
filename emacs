@@ -1,25 +1,40 @@
+;; ======= custom-set-variables =====================
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
- '(ansi-color-names-vector
-   ["black" "red3" "ForestGreen" "yellow3" "blue" "magenta3" "DeepSkyBlue" "gray50"])
- '(custom-enabled-themes '(tsdh-dark))
+
+ ;;desktop mode enable
  '(desktop-save-mode t)
- '(diary-file "D:/work/my_organization/diary")
+ 
+ ;; global-linum-mode
  '(global-linum-mode t)
+ 
+ ;; disable startup screen
  '(inhibit-startup-screen t)
+
+ ;; show paren-mode
  '(show-paren-mode t))
+
+;; optional setting
+'(diary-file "D:/work/my_organization/diary")
+
+;; ============ custom-set-faces ===========================
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
-
-
+ ;; for better chinese character performance please usin  sarasa mono SC font
  '(default ((t (:family "Source Code Pro" :foundry "outline" :slant normal :weight normal :height 105 :width normal))))
-
  )
+;; ======== other settings =================================
+ (prefer-coding-system 'utf-8)
+ (set-default-coding-systems 'utf-8)
+ ;;(set-language-environment 'utf-8)
+ ;;(set-selection-coding-system 'utf-8)
+
+;; ========== ELPA source setting ============================
+ ;;1. ====USTC mirrors========================
+ (setq package-archives '(("gnu" . "http://mirrors.ustc.edu.cn/elpa/gnu/")
+                          ("melpa" . "http://mirrors.ustc.edu.cn/elpa/melpa/")
+                          ("melpa-stable" . "http://mirrors.ustc.edu.cn/elpa/melpa-stable/")
+                          ("org" . "http://mirrors.ustc.edu.cn/elpa/org/")))
+ ;;2.  emacs china mirrors in https://elpa.emacs-china.org/
+;; ======== auto complete =====================================
+;; 1. on-line install auto-complete by M-x install-packages RET <package-name>, then
+(ac-config-default)
+;; 2. offline install
