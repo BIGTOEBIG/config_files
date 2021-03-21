@@ -1,5 +1,11 @@
 ;; ======= custom-set-variables =====================
 (custom-set-variables
+ '(inhibit-startup-screen t)
+ 
+ '(tool-bar-mode nil))
+ '(size-indication-mode t)
+ '(display-time-mode t)
+ '(column-number-mode t)
 
  ;;desktop mode enable
  '(desktop-save-mode t)
@@ -7,9 +13,6 @@
  ;; global-linum-mode
  '(global-linum-mode t)
  
- ;; disable startup screen
- '(inhibit-startup-screen t)
-
  ;; show paren-mode
  '(show-paren-mode t))
 
