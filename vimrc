@@ -1,3 +1,10 @@
+" ======  source other config files =========
+if filereadable(expand("$VIMRUNTIME/../_vimrc"))
+    source $VIMRUNTIME/../_vimrc
+endif
+if filereadable(expand("/etc/vimrc"))
+    source /etc/vimrc
+endif
 " ======  common setting ====================
 set nu
 set hls
@@ -7,12 +14,12 @@ set nocompatible  " not need to be compatible with vi
 " ======  tab indent setting ================
 set tabstop=4
 set shiftwidth=4
-set noexpandtab
+set expandtab
 
 "set autoindent
-"set smartindent
+set smartindent
 "set indentexpr
-set cindent
+"set cindent
 
 " ======  fold setting ======================
 set foldmethod=indent
@@ -56,24 +63,24 @@ if  has('gui')
     " ====== gui font setting =================
     if  has('gui_win32') || has("gui_win64")      " windows gui case
         " set guifontset guifont=Courier\ New\ 10
-        " set guifont=Courier_New:h12:cANSI
         " set guifont=Cascadia_Code:h10:cANSI
-        set guifont=Source_Code_Pro:h10:cANSI
+        " set guifont=Source_Code_Pro:h10:cANSI
+        set guifont=consolas:h9:cANSI
     else                                          " linux gui case (gui-gtk3)
-        set guifont=source\ code\ pro\ 11
+        set guifont=monospace\ 11
     endif
+    colorscheme morning
 
     " ====== menu language setting ============
     " set langmenu=en   "set menu's language of gvim. no spaces beside '='
-    set guioptions+=d
-    set guioptions+=P
+    set guioptions-=T
+    set guioptions-=m
     " language en_US.utf8   "set menu's language of gvim. no spaces beside '='
     " ====== gui colorscheme setting ==========
     " colorscheme slate
     " colorscheme koehler 
     " colorscheme peachpuff
     " colorscheme blue
-    colorscheme morning
 
 else
     " ====== colorscheme setting ==============
@@ -91,7 +98,7 @@ else
     " Plugin 'vimwiki'
     " " --------------------------------
     " call vundle#end()
-    filetype plugin indent on
+    " filetype plugin indent on
     " filetype plugin on
     "
 	" ==== cursor color && shape setting (only in terminal)
