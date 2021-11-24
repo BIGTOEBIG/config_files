@@ -72,7 +72,7 @@ if  has('gui')
     colorscheme morning
 
     " ====== menu language setting ============
-    " set langmenu=en   "set menu's language of gvim. no spaces beside '='
+    set langmenu=en   "set menu's language of gvim. no spaces beside '='
     set guioptions-=T
     set guioptions-=m
     " language en_US.utf8   "set menu's language of gvim. no spaces beside '='
