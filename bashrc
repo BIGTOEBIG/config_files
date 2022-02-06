@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# ==== Return if not run interactivly ====(solve scp can't used issue)
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
 # == Functions =====================
 color_map() {
     local string=" AAA "
@@ -54,6 +60,27 @@ function func() {
     echo The last bg PS id      '$!': $!
     echo Current shell option   '$-': $-
     echo Show the last exec return '$?': $?
+}
+
+run_sshd(){
+    if [ $(ps -e | grep "sshd" | wc -l) == 0 ]; then
+        if [ -f $HOME/.ssh/id_rsa ]; then
+            echo "Launching sshd"
+            /usr/bin/sshd.exe -h ~/.ssh/id_rsa
+        else
+            echo "Can't find file id_rsa in path ~/.ssh/, sshd is not enabled."
+        fi
+    else
+        echo "sshd is running."
+    fi
+}
+
+tree(){
+    cmd.exe /C "tree /F /A $1"
+}
+
+calc () {
+    awk " BEGIN{ print $* ;} " ;
 }
 
 # == Alias ========================
