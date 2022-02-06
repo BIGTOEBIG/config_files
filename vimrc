@@ -1,19 +1,23 @@
 " ======  source other config files =========
 if filereadable(expand("$VIMRUNTIME/../_vimrc"))
+    " win32 gvim setting
     source $VIMRUNTIME/../_vimrc
 endif
 if filereadable(expand("/etc/vimrc"))
+    " vim in git bash
     source /etc/vimrc
 endif
-" ======  common setting ====================
+
+" ======  common settings ===================
 set nu
 set hls
 set incsearch
-set nocompatible  " not need to be compatible with vi
-" set showmatch   " sm (only in version 8.2)
-" ======  tab indent setting ================
-set tabstop=4
+set nowrap
+set laststatus=2
+" set cursorline
+" set mouse
 set shiftwidth=4
+set tabstop=4
 set expandtab
 
 "set autoindent
@@ -24,25 +28,42 @@ set smartindent
 " ======  fold setting ======================
 set foldmethod=indent
 set nofoldenable
+autocmd FileType make set noexpandtab
+" ====== Key  Mapping =======
+nnoremap <silent> ,m : noh<CR>
+nnoremap <silent> ,n : set hls<CR>
+map ,s *vey/<C-R>0<CR>:vimgrep /<C-R>0/ %<CR>:copen<CR><C-W>W
+map ,a     /<C-R>0<CR>:vimgrep /<C-R>0/ %<CR>:copen<CR><C-W>W
+map ,A     /\<<C-R>0\><CR>:vimgrep /\<<C-R>0\>/ %<CR>:copen<CR><C-W>W
+vmap ,o     y:vs <C-R>0 <CR><C-W>L
+nmap ,d     a<C-R>=strftime('%Y-%m-%d')<CR> <Esc>
+nmap ,t     a<C-R>=strftime('%H-%M-%S')<CR> <Esc>
+nmap ,D     a<C-R>=strftime('%Y-%m-%d %H-%M-%S')<CR> <Esc>
+nnoremap n nzz
+nnoremap N Nzz
+" ===== Abbre ===============
+iab xdate <C-R>=strftime('%Y-%m-%d')<CR>
+iab xtime <C-R>=strftime('%H-%M-%S')<CR>
 
 " ======  wrap setting ======================
 set nowrap
+
+"" set diffopt+=iwhite
+"" " if &diff
+"" "     map gs :call IwhiteToggle()
+"" "     function! IwhiteToggle()
+"" "         if &diffopt =~ 'iwhite'
+"" "             set diffopt-=iwhite
+"" "         else
+"" "             set diffopt+=iwhite
+"" "         endif
+"" "     endfunction
+"" " endif
 syntax enable
 
 " ======  encoding setting ==================
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,ucs-2,latin1
-
-" ======  mapping kbd  ======================
-nmap <silent> ,m :set nohls<CR>
-" or : nmap <silent> ,m :noh<CR>
-nmap <silent> ,n :set hls<CR>
-nmap <silent> ,+ :set cursorline<CR>:set cursorcolumn<CR>
-nmap <silent> ,= :set nocursorline<CR>:set nocursorcolumn<CR>
-nmap ,l nzz
-nmap ,; Nzz
-map ,s *vey/<C-R>0<CR>:vimgrep /<C-R>0/  %<CR>:copen<CR><C-W>W
-map ,a /<C-R>0<CR>:vimgrep /<C-R>0/  %<CR>:copen<CR><C-W>W
-set ttyfast "Improves smoothness of redrawing
+set encoding=utf-8
 
 " ======  status line setting ===============
 set ruler 
@@ -59,13 +80,14 @@ set statusline+=%=%-14.(%l/%L,%c%V%)\ %p%% " Right aligned file nav info
 " set helplang=en  "set help's language of vim. 
 
 " ===== following setting is for Vundle ==========
-if  has('gui') 
+if has("gui")
     " ====== gui font setting =================
     if  has('gui_win32') || has("gui_win64")      " windows gui case
         " set guifontset guifont=Courier\ New\ 10
         " set guifont=Cascadia_Code:h10:cANSI
         " set guifont=Source_Code_Pro:h10:cANSI
         set guifont=consolas:h9:cANSI
+        set backspace=2 " same as set backspace=indent,eol,start
     else                                          " linux gui case (gui-gtk3)
         set guifont=monospace\ 11
     endif
@@ -75,13 +97,6 @@ if  has('gui')
     set langmenu=en   "set menu's language of gvim. no spaces beside '='
     set guioptions-=T
     set guioptions-=m
-    " language en_US.utf8   "set menu's language of gvim. no spaces beside '='
-    " ====== gui colorscheme setting ==========
-    " colorscheme slate
-    " colorscheme koehler 
-    " colorscheme peachpuff
-    " colorscheme blue
-
 else
     " ====== colorscheme setting ==============
     " colorscheme blue
