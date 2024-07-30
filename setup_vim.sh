@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 CUR_DIR=$(dirname $(realpath $BASH_SOURCE))
-BUNDLE_SRC=$CUR_DIR/vim
+BUNDLE_SRC=$CUR_DIR/vim_
 BUNDLE_DST=$HOME/.vim/bundle
 
 mkdir -p $BUNDLE_DST
