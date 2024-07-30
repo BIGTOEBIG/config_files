@@ -104,3 +104,5 @@ _7z_exe="/c/Program Files/7-Zip/7z.exe"
 # add_path "/c/Users/lxq/nmap-7.80"
 
 unset _7z_exe
+
+echo $BASH_SOURCE is sourced
