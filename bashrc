@@ -89,6 +89,12 @@ calc () {
     awk " BEGIN{ print $* ;} " ;
 }
 
+gh_clone() {
+    url="$1"
+    shift
+    git clone "https://mirror.ghproxy.com/${url}" "$@" 
+}
+
 # == Alias ========================
 # alias find_ssh='nmap.exe -sS -p22 --open 192.168.0.100-110'
 # alias python="winpty py -2"
