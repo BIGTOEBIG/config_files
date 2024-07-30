@@ -1,0 +1,18 @@
+[submodule "vim/Vundle.vim"]
+	path = vim/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim.git
+[submodule "vim/nerdtree"]
+	path = vim/nerdtree
+	url = https://github.com/preservim/nerdtree.git
+[submodule "vim/tabular"]
+	path = vim/tabular
+	url = https://github.com/godlygeek/tabular
+[submodule "vim/vim-markdown"]
+	path = vim/vim-markdown
+	url = https://github.com/preservim/vim-markdown.git
+[submodule "vim/vim-airline"]
+	path = vim/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule "vim/gruvbox"]
+	path = vim/gruvbox
+	url = https://github.com/morhetz/gruvbox.git

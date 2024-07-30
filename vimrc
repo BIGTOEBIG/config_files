@@ -1,34 +1,37 @@
-" ======  source other config files =========
-if filereadable(expand("$VIMRUNTIME/../_vimrc"))
-    " win32 gvim setting
-    source $VIMRUNTIME/../_vimrc
-endif
+" ===  source other config files =========
+
 if filereadable(expand("/etc/vimrc"))
     " vim in git bash
     source /etc/vimrc
 endif
+if filereadable(expand("$VIMRUNTIME/../_vimrc"))
+    " win32 gvim setting
+    source $VIMRUNTIME/../_vimrc
+endif
 
-" ======  common settings ===================
+" === Common settings ======================
 set nu
-set hls
-set incsearch
-set nowrap
-set laststatus=2
+set hlsearch
+set noincsearch
+set nobackup
+set mouse=a
 " set cursorline
-" set mouse
+
+" === tab indent setting ===================
 set shiftwidth=4
 set tabstop=4
 set expandtab
 
-"set autoindent
 set smartindent
+"set autoindent
 "set indentexpr
 "set cindent
+autocmd FileType make set noexpandtab
 
 " ======  fold setting ======================
 set foldmethod=indent
 set nofoldenable
-autocmd FileType make set noexpandtab
+
 " ====== Key  Mapping =======
 nnoremap <silent> ,m : noh<CR>
 nnoremap <silent> ,n : set hls<CR>
@@ -41,6 +44,7 @@ nmap ,t     a<C-R>=strftime('%H-%M-%S')<CR> <Esc>
 nmap ,D     a<C-R>=strftime('%Y-%m-%d %H-%M-%S')<CR> <Esc>
 nnoremap n nzz
 nnoremap N Nzz
+
 " ===== Abbre ===============
 iab xdate <C-R>=strftime('%Y-%m-%d')<CR>
 iab xtime <C-R>=strftime('%H-%M-%S')<CR>
@@ -59,7 +63,6 @@ set nowrap
 "" "         endif
 "" "     endfunction
 "" " endif
-syntax enable
 
 " ======  encoding setting ==================
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,ucs-2,latin1
@@ -79,13 +82,31 @@ set statusline+=%=%-14.(%l/%L,%c%V%)\ %p%% " Right aligned file nav info
 " let $LANG = 'en'  "set message language
 " set helplang=en  "set help's language of vim. 
 
-" ===== following setting is for Vundle ==========
+" === Plugin ===============================
+
+set rtp+=~/.vim/bundle/Vundle.vim
+set nocompatible
+filetype off
+
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+" put your plugins here -----
+Plugin 'godlygeek/tablular'
+Plugin 'perservim/vim-markdown'
+Plugin 'vim-airline/vim-airline'
+Plugin 'morhetz/gruvbox'
+call vundle#end()
+
+filetype plugin indent on
+
+" === Spell ================================
+autocmd FileType makedown setlocal spell
+autocmd BufRead,BufNewFile *.txt setlocal spell
+
+" === Style Setting ========================
 if has("gui")
     " ====== gui font setting =================
     if  has('gui_win32') || has("gui_win64")      " windows gui case
-        " set guifontset guifont=Courier\ New\ 10
-        " set guifont=Cascadia_Code:h10:cANSI
-        " set guifont=Source_Code_Pro:h10:cANSI
         set guifont=consolas:h9:cANSI
         set backspace=2 " same as set backspace=indent,eol,start
     else                                          " linux gui case (gui-gtk3)
@@ -98,25 +119,6 @@ if has("gui")
     set guioptions-=T
     set guioptions-=m
 else
-    " ====== colorscheme setting ==============
-    " colorscheme blue
-    " set mouse=
-
-    " ====== plugin setting ===================
-    " filetype off
-    " set rtp+=/c/Users/lxq/.vim/bundle/Vundle.vim
-    " "set rtp+=C:\Users\lxq\.vim\bundle\Vundle.vim
-    " call vundle#begin()
-    " " call vundle#begin('~/.vim/plugins') " alternatively using this call to specify your plugins dir 
-    " Plugin 'VundleVim/Vundle.vim'
-    " " ---- put your plugins here -----
-    " Plugin 'vimwiki'
-    " " --------------------------------
-    " call vundle#end()
-    " filetype plugin indent on
-    " filetype plugin on
-    "
-	" ==== cursor color && shape setting (only in terminal)
 	if &term =~ "xterm\\|rxvt"
 		let &t_SI = "\<Esc>]12;yellow\x7\e[5 q"
 		let &t_SR = "\<Esc>]12;red\x7\e[1 q"
@@ -126,3 +128,7 @@ else
 	    " let &t_EI = "\<Esc>[62 q"
 	endif
 endif
+
+" let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_folding_style_pythonic = 1
+let g:vim_markdown_folding_level = 2
