@@ -108,10 +108,10 @@ if has("gui")
     if  has('gui_win32') || has("gui_win64")      " windows gui case
         set guifont=consolas:h9:cANSI
         set backspace=2 " same as set backspace=indent,eol,start
+        colorscheme morning
     else                                          " linux gui case (gui-gtk3)
         set guifont=monospace\ 11
     endif
-    colorscheme morning
 
     " ====== menu language setting ============
     set langmenu=en   "set menu's language of gvim. no spaces beside '='
