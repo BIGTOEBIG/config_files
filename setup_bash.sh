@@ -1,6 +1,10 @@
 #!/usr/bin/bash
 CUR_DIR=$(dirname $(realpath $BASH_SOURCE))
-BASHRC_LOC=$(cygpath -u $CUR_DIR/bashrc)
+if [ "$(uname)" == "Linux" ] ; then
+  BASHRC_LOC=$CUR_DIR/bashrc
+else
+  BASHRC_LOC=$(cygpath -u $CUR_DIR/bashrc)
+fi
 BASHRC_USR=$HOME/.bashrc
 CONTENT="\
 # ~~~~~~~~~-------~~~~~~~~~~~~~~~~~BEGIN

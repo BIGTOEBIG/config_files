@@ -1,5 +1,4 @@
 " ===  source other config files =========
-
 if filereadable(expand("/etc/vimrc"))
     " vim in git bash
     source /etc/vimrc

@@ -1,5 +1,7 @@
 #!/usr/bin/bash
+echo ${BASH_SOURCE}
 CUR_DIR=$(dirname $(realpath $BASH_SOURCE))
+echo ${CUR_DIR}
 BUNDLE_SRC=$CUR_DIR/vim_
 BUNDLE_DST=$HOME/.vim/bundle
 
@@ -7,7 +9,11 @@ mkdir -p $BUNDLE_DST
 echo cp $BUNDLE_SRC/* $BUNDLE_DST
 cp -r $BUNDLE_SRC/* $BUNDLE_DST
 
-VIMRC_LOC=$(cygpath -m $CUR_DIR/vimrc)
+if [ "$(uname)" == "Linux" ] ; then
+  VIMRC_LOC=$CUR_DIR/vimrc
+else
+  VIMRC_LOC=$(cygpath -m $CUR_DIR/vimrc)
+fi
 VIMRC_USR=$HOME/.vimrc
 CONTENT="\
 \" ~~~~~~~~~-------~~~~~~~~~~~~~~~~~BEGIN
