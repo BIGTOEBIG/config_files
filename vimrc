@@ -32,6 +32,17 @@ set foldmethod=indent
 set nofoldenable
 
 " ====== Key  Mapping =======
+
+xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
+
+function! s:VSetSearch(cmdtype)
+  let temp = @s
+  norm! gv"sy
+  let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
+  let @s = temp
+endfunction
+
 nnoremap <silent> ,m : noh<CR>
 nnoremap <silent> ,n : set hls<CR>
 map ,s *vey/<C-R>0<CR>:vimgrep /<C-R>0/ %<CR>:copen<CR><C-W>W
